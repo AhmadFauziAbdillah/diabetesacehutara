@@ -1,7 +1,7 @@
 <?php
 
-$hostname = 'xuff1k.stackhero-network.com';
-$port = '5349';
+$hostname = 't3527e.stackhero-network.com';
+$port = '7365';
 $user = 'root';
 $password = 'MNqkyH2FmQXu7G3Ygd9GjQqQ2FfP7aVt';
 $database = 'dbscan'; // You shouldn't use the "root" database. This is just for the example. The recommended way is to create a dedicated database (and user) in PhpMyAdmin and use it then here.
