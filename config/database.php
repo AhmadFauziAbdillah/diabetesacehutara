@@ -1,19 +1,23 @@
 <?php
-$host = 'localhost';
-$db   = 'dbscan';
+
+$hostname = 'xuff1k.stackhero-network.com';
+$port = '5349';
 $user = 'root';
-$pass = '';
-$charset = 'utf8mb4';
+$password = 'MNqkyH2FmQXu7G3Ygd9GjQqQ2FfP7aVt';
+$database = 'dbscan'; // You shouldn't use the "root" database. This is just for the example. The recommended way is to create a dedicated database (and user) in PhpMyAdmin and use it then here.
 
-$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
-$options = [
-    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-    PDO::ATTR_EMULATE_PREPARES   => false,
-];
+$dsn = "mysql:host=$hostname;port=$port;dbname=$database";
 
-try {
-    $pdo = new PDO($dsn, $user, $pass, $options);
-} catch (\PDOException $e) {
-    throw new \PDOException($e->getMessage(), (int)$e->getCode());
-}
+$options = array(
+  // See below if you have an error like "Uncaught PDOException: PDO::__construct(): SSL operation failed with code 1. OpenSSL Error messages: error:0A000086:SSL routines::certificate verify failed".
+  PDO::MYSQL_ATTR_SSL_CAPATH => '/etc/ssl/certs/',
+  // PDO::MYSQL_ATTR_SSL_CA => 'isrgrootx1.pem',
+  PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => true,
+);
+
+$pdo = new PDO($dsn, $user, $password, $options);
+
+$stm = $pdo->query("SELECT VERSION()");
+$version = $stm->fetch();
+
+?>
