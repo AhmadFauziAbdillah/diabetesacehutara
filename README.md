@@ -1,4 +1,4 @@
-# 🩸 DBSCAN Clustering Analysis for Diabetes Data - Aceh Utara
+DBSCAN Clustering Analysis for Diabetes Data - Aceh Utara
 
 ![PHP Version](https://img.shields.io/badge/PHP-92.2%25-blue)
 ![CSS Version](https://img.shields.io/badge/CSS-7.8%25-purple)
@@ -14,7 +14,7 @@ Demo: [http://www.diabetesacehutara.my.id/](http://www.diabetesacehutara.my.id/)
 
 - **Analisis Clustering** - Menggunakan algoritma DBSCAN untuk mengidentifikasi area dengan konsentrasi kasus diabetes tinggi
 - **Visualisasi Data** - Menampilkan hasil analisis dalam bentuk dashboard interaktif
-- **Analisis Regional** - Membandingkan data dari berbagai wilayah di Aceh Utara (Paya Bakong, Geuredong Pase, Simpang Kramat, dll.)
+- **Analisis Data** - Membandingkan data dari berbagai wilayah di Aceh Utara (Paya Bakong, Geuredong Pase, Simpang Kramat, dll.)
 - **Basis Data SQL** - Penyimpanan data terstruktur menggunakan SQL database
 
 ## 🛠️ Teknologi
