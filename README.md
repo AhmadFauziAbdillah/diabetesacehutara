@@ -10,6 +10,9 @@ DBSCAN Clustering Dashboard adalah aplikasi analisis data berbasis web untuk men
 
 Demo: [http://www.diabetesacehutara.my.id/](http://www.diabetesacehutara.my.id/)
 
+Untuk File GeoJson Gunakan Ini :
+https://github.com/yusufsyaifudin/wilayah-indonesia/tree/master/data/list_of_area
+
 ## 🔍 Fitur Utama
 
 - **Analisis Clustering** - Menggunakan algoritma DBSCAN untuk mengidentifikasi area dengan konsentrasi kasus diabetes tinggi
