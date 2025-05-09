@@ -10,8 +10,6 @@ DBSCAN Clustering Dashboard adalah aplikasi analisis data berbasis web untuk men
 
 Demo: [http://www.diabetesacehutara.my.id/](http://www.diabetesacehutara.my.id/)
 
-![Dashboard Preview](/img/dashboard-preview.png)
-
 ## 🔍 Fitur Utama
 
 - **Analisis Clustering** - Menggunakan algoritma DBSCAN untuk mengidentifikasi area dengan konsentrasi kasus diabetes tinggi
@@ -27,7 +25,7 @@ Demo: [http://www.diabetesacehutara.my.id/](http://www.diabetesacehutara.my.id/)
 - **Algoritma**: DBSCAN (Density-Based Spatial Clustering of Applications with Noise)
 - **Deployment**: Heroku
 
-## 📋 Persyaratan Sistem
+## 📋 Requirement System
 
 - PHP 7.4 atau lebih tinggi
 - MySQL 5.7 atau lebih tinggi
@@ -77,22 +75,8 @@ Algoritma DBSCAN digunakan karena keunggulannya untuk data geografis:
 ## 👨‍💻 Pengembang
 
 **Ahmad Fauzi Abdillah**  
-Mahasiswa Informatika Universitas Malikussaleh  
+Universitas Malikussaleh  
 [GitHub](https://github.com/AhmadFauziAbdillah) | [Instagram](https://www.instagram.com/faujiabdilah_/)
-
-## 📄 Lisensi
-
-Proyek ini dilisensikan di bawah [MIT License](LICENSE).
-
-## 🤝 Kontribusi
-
-Kontribusi sangat diterima! Jika Anda menemukan bug atau memiliki saran untuk peningkatan:
-
-1. Fork repository
-2. Buat branch fitur (`git checkout -b feature/AmazingFeature`)
-3. Commit perubahan Anda (`git commit -m 'Add some AmazingFeature'`)
-4. Push ke branch (`git push origin feature/AmazingFeature`)
-5. Buka Pull Request
 
 ---
 
