@@ -4,7 +4,7 @@
 ![CSS Version](https://img.shields.io/badge/CSS-7.8%25-purple)
 ![Status](https://img.shields.io/badge/Status-Active-green)
 
-## 📊 Tentang Proyek
+## 📊 About
 
 DBSCAN Clustering Dashboard adalah aplikasi analisis data berbasis web untuk mengidentifikasi dan memvisualisasikan persebaran kasus diabetes di wilayah Aceh Utara. Proyek ini menggunakan algoritma DBSCAN (Density-Based Spatial Clustering of Applications with Noise) untuk mengelompokkan data diabetes berdasarkan kepadatan populasi dan faktor risiko.
 
@@ -13,14 +13,14 @@ Demo: [http://www.diabetesacehutara.my.id/](http://www.diabetesacehutara.my.id/)
 Untuk File GeoJson Gunakan Ini :
 https://github.com/yusufsyaifudin/wilayah-indonesia/tree/master/data/list_of_area
 
-## 🔍 Fitur Utama
+## 🔍 Fitur
 
 - **Analisis Clustering** - Menggunakan algoritma DBSCAN untuk mengidentifikasi area dengan konsentrasi kasus diabetes tinggi
 - **Visualisasi Data** - Menampilkan hasil analisis dalam bentuk dashboard interaktif
 - **Analisis Data** - Membandingkan data dari berbagai wilayah di Aceh Utara (Paya Bakong, Geuredong Pase, Simpang Kramat, dll.)
 - **Basis Data SQL** - Penyimpanan data terstruktur menggunakan SQL database
 
-## 🛠️ Teknologi
+## 🛠️ Script
 
 - **Backend**: PHP (92.2%)
 - **Frontend**: HTML, CSS (7.8%), JavaScript
