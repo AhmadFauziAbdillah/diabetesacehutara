@@ -41,9 +41,8 @@ if (!$is_admin):
                     <?php endif; ?>
                 </div>
                 <div class="social-icons">
-                    <a href="#" title="GitHub"><i class="bi bi-github"></i></a>
-                    <a href="#" title="Twitter"><i class="bi bi-twitter"></i></a>
-                    <a href="#" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
+<a href="https://github.com/AhmadFauziAbdillah/diabetesacehutara" title="GitHub"><i class="bi bi-github"></i></a>
+<a href="https://www.instagram.com/faujiabdilah_/" title="Instagram"><i class="bi bi-instagram"></i></a>
                 </div>
                 <p class="copyright">&copy; <?= date('Y') ?> DBSCAN Clustering Analysis for Diabetes Data</p>
             </div>
