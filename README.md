@@ -6,7 +6,7 @@
 
 ## 📊 About
 
-DBSCAN Clustering Dashboard adalah aplikasi analisis data berbasis web untuk mengidentifikasi dan memvisualisasikan persebaran kasus diabetes di wilayah Aceh Utara. Proyek ini menggunakan algoritma DBSCAN (Density-Based Spatial Clustering of Applications with Noise) untuk mengelompokkan data diabetes berdasarkan kepadatan populasi dan faktor risiko.
+DBSCAN Clustering Dashboard adalah aplikasi analisis data berbasis web untuk mengidentifikasi dan memvisualisasikan persebaran kasus diabetes di wilayah Aceh Utara. Proyek ini menggunakan algoritma DBSCAN (Density-Based Spatial Clustering of Applications with Noise).
 
 Demo: [http://www.diabetesacehutara.my.id/](http://www.diabetesacehutara.my.id/)
 
