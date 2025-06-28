@@ -1,6 +1,8 @@
-/* 
+/*
  * Main Stylesheet for Diabetes Clustering Dashboard
  * Organized by component with clear sections
+ *
+ * Ditambahkan penyesuaian untuk responsivitas di perangkat mobile.
  */
 
 /* ---------- RESET & BASE STYLES ---------- */
@@ -20,6 +22,7 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    -webkit-text-size-adjust: 100%; /* Penting untuk menghindari penskalaan teks otomatis di iOS */
 }
 
 main {
@@ -73,6 +76,33 @@ a {
 .navbar .nav-link:hover::after {
     width: calc(100% - 2rem);
 }
+
+/* Penyesuaian Navbar untuk Mobile */
+@media (max-width: 991.98px) {
+    .navbar-collapse {
+        background-color: #ffffff; /* Tambahkan background agar menu terlihat */
+        padding: 1rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        margin-top: 0.5rem;
+    }
+    .navbar .nav-link {
+        width: 100%;
+        text-align: center;
+        padding: 0.75rem 1rem;
+        border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+    .navbar .nav-link:last-child {
+        border-bottom: none;
+    }
+    .navbar .nav-link::after {
+        display: none; /* Sembunyikan underline di mobile */
+    }
+    .navbar-brand {
+        font-size: 1.25rem;
+    }
+}
+
 
 /* ---------- FOOTER STYLES ---------- */
 .footer {
@@ -266,7 +296,7 @@ a {
     background-color: rgba(13, 110, 253, 0.05);
 }
 
-.custom-table th, 
+.custom-table th,
 .custom-table td {
     padding: 1rem;
 }
@@ -327,42 +357,203 @@ a {
 
 /* ---------- ANIMATIONS ---------- */
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .fade-in {
     animation: fadeIn 0.5s ease-out forwards;
 }
 
-/* ---------- MEDIA QUERIES ---------- */
-@media (max-width: 767.98px) {
+/* ---------- MEDIA QUERIES & RESPONSIVE ADJUSTMENTS ---------- */
+
+/* Penyesuaian umum untuk responsivitas container */
+.container-fluid.py-4 {
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 1rem !important; /* Kurangi padding atas/bawah */
+    padding-bottom: 1rem !important;
+}
+
+/* Bagian Header Dashboard (Judul dan Dropdown Tahun) */
+.d-flex.justify-content-between.align-items-center.mb-4 {
+    flex-direction: column; /* Ubah tata letak menjadi kolom di mobile */
+    align-items: flex-start; /* Sejajarkan item ke kiri */
+    margin-bottom: 1.5rem !important;
+}
+
+.d-flex.justify-content-between.align-items-center.mb-4 h1.h2 {
+    font-size: 1.5rem; /* Ukuran font lebih kecil untuk judul di mobile */
+    margin-bottom: 10px;
+    text-align: center;
+    width: 100%; /* Pastikan judul mengambil lebar penuh */
+}
+
+.year-select {
+    width: 100%; /* Buat dropdown tahun mengambil lebar penuh */
+    margin-top: 10px; /* Beri sedikit jarak dari judul */
+}
+
+/* Kartu Statistik */
+.dashboard-card {
+    margin-bottom: 1rem; /* Kurangi margin antar kartu */
+    padding: 1rem; /* Kurangi padding internal kartu */
+}
+
+.dashboard-card .stat-value {
+    font-size: 1.5rem; /* Sesuaikan ukuran font nilai statistik */
+}
+
+/* Progres bar di kartu distribusi kluster */
+.progress {
+    height: 10px !important; /* Buat progress bar sedikit lebih tebal */
+}
+
+/* Bagian Grafik dan Statistik Level */
+@media (max-width: 991.98px) { /* Untuk tablet dan mobile, tumpuk kolom */
+    .col-lg-8,
+    .col-lg-4 {
+        width: 100%;
+        margin-bottom: 1.5rem; /* Tambahkan margin bawah saat ditumpuk */
+    }
+}
+
+.chart-wrapper {
+    position: relative;
+    height: 300px; /* Sesuaikan tinggi grafik untuk mobile */
+    width: 100%;
+}
+
+/* Peta Distribusi */
+.map-controls {
+    width: 100%; /* Kontrol peta mengambil lebar penuh */
+    margin-top: 15px; /* Beri jarak dari judul peta */
+}
+
+.map-controls select {
+    width: 100%;
+}
+
+#regionMap {
+    height: 350px !important; /* Sesuaikan tinggi peta untuk mobile */
+}
+
+/* Legenda peta */
+.map-legend {
+    flex-direction: column; /* Legenda peta menjadi kolom di mobile */
+    align-items: flex-start; /* Sejajarkan item legenda ke kiri */
+    margin-top: 15px;
+}
+
+.map-legend div {
+    margin-bottom: 5px;
+    margin-right: 0 !important; /* Hapus margin kanan antar item */
+}
+
+/* Tabel Data */
+.table-responsive {
+    overflow-x: auto; /* Pastikan tabel bisa di-scroll horizontal jika terlalu lebar */
+    -webkit-overflow-scrolling: touch; /* Optimalkan scrolling di iOS */
+}
+
+.table th, .table td {
+    white-space: nowrap; /* Jaga agar teks di sel tidak pecah baris secara paksa */
+    padding: 0.75rem; /* Sesuaikan padding sel tabel */
+}
+
+/* Badge status */
+.status-badge {
+    font-size: 0.85em; /* Ukuran font sedikit lebih kecil untuk badge */
+    padding: .3em .6em;
+}
+
+/* Override untuk ikon dan teks kecil jika terlalu besar/terlalu kecil */
+.stat-icon {
+    min-width: 40px; /* Ukuran ikon stat tetap konsisten */
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+}
+
+.stat-icon i {
+    font-size: 1.2rem;
+}
+
+.text-muted.small {
+    font-size: 0.85em;
+}
+
+/* General spacing for smaller screens */
+@media (max-width: 576px) {
+    h1.h2 {
+        font-size: 1.3rem; /* Further reduce heading size */
+    }
+    .dashboard-card {
+        padding: 0.8rem;
+    }
+    .stat-value {
+        font-size: 1.3rem;
+    }
+    .small.text-muted {
+        font-size: 0.8em;
+    }
+    /* Untuk tombol di footer jika ada di baris yang sama */
+    .footer-nav a {
+        margin: 0.3rem 0.5rem; /* Lebih rapat di layar sangat kecil */
+    }
+    .social-icons a {
+        width: 32px; /* Ukuran ikon sosial sedikit lebih kecil */
+        height: 32px;
+        font-size: 1.1rem;
+    }
+}
+
+/* Aturan dari index.php yang dipertahankan atau dipindahkan ke sini */
+@media (max-width: 768px) {
+    /* Ini sudah ada di file asli Anda, pastikan untuk menggabungkannya dengan yang baru jika ada tumpang tindih */
     .container {
         padding-left: 1rem;
         padding-right: 1rem;
     }
-    
+
     .card-body {
         padding: 1.25rem;
     }
-    
+
     .dashboard-card {
         padding: 1.25rem;
     }
-    
+
     .navbar {
         padding: 0.5rem 0;
     }
-    
+
     .footer {
         padding: 1.5rem 0;
     }
-    
+
     .footer-nav a {
         margin: 0.5rem;
     }
-    
+
     .social-icons a {
         margin: 0 0.3rem;
+    }
+
+    .map-legend {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .map-legend div {
+        margin-bottom: 5px;
     }
 }
