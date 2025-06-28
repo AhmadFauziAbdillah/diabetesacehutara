@@ -2,7 +2,8 @@
  * Main Stylesheet for Diabetes Clustering Dashboard
  * Organized by component with clear sections
  *
- * Ditambahkan penyesuaian untuk responsivitas di perangkat mobile.
+ * Ditambahkan penyesuaian untuk responsivitas di perangkat mobile
+ * dan perbaikan potensi masalah teks hilang pada navigasi.
  */
 
 /* ---------- RESET & BASE STYLES ---------- */
@@ -18,7 +19,7 @@ body {
     line-height: 1.6;
     color: #212529;
     transition: background-color 0.3s ease, color 0.3s ease;
-    overflow-x: hidden;
+    overflow-x: hidden; /* Mencegah scrollbar horizontal yang tidak diinginkan */
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -55,6 +56,7 @@ a {
     padding: 0.5rem 1rem;
     position: relative;
     font-weight: 500;
+    color: #212529; /* Pastikan warna teks terlihat */
 }
 
 .navbar .nav-link i {
@@ -77,10 +79,13 @@ a {
     width: calc(100% - 2rem);
 }
 
-/* Penyesuaian Navbar untuk Mobile */
+/* Penyesuaian Navbar untuk Mobile (Breakpoint Bootstrap MD: 991.98px) */
 @media (max-width: 991.98px) {
+    .navbar {
+        padding: 0.5rem 0; /* Kurangi padding navbar di mobile */
+    }
     .navbar-collapse {
-        background-color: #ffffff; /* Tambahkan background agar menu terlihat */
+        background-color: #ffffff; /* Tambahkan background agar menu terlihat saat dibuka */
         padding: 1rem;
         border-radius: 0.5rem;
         box-shadow: 0 4px 10px rgba(0,0,0,0.05);
@@ -91,6 +96,7 @@ a {
         text-align: center;
         padding: 0.75rem 1rem;
         border-bottom: 1px solid rgba(0,0,0,0.05);
+        color: #212529; /* Pastikan warna teks nav-link tetap terlihat di menu toggle */
     }
     .navbar .nav-link:last-child {
         border-bottom: none;
@@ -100,6 +106,26 @@ a {
     }
     .navbar-brand {
         font-size: 1.25rem;
+    }
+    /* Pastikan hamburger icon tidak hilang */
+    .navbar-toggler {
+        border: none;
+        padding: .25rem .75rem;
+        font-size: 1.25rem;
+        line-height: 1;
+        background-color: transparent;
+        border-radius: .25rem;
+        transition: box-shadow .15s ease-in-out;
+    }
+    .navbar-toggler-icon {
+        display: inline-block;
+        width: 1.5em;
+        height: 1.5em;
+        vertical-align: middle;
+        background-image: var(--bs-navbar-toggler-icon-bg); /* Menggunakan variabel Bootstrap */
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 100%;
     }
 }
 
@@ -382,22 +408,23 @@ a {
 }
 
 /* Bagian Header Dashboard (Judul dan Dropdown Tahun) */
+/* Flex direction column untuk tumpukan di mobile */
 .d-flex.justify-content-between.align-items-center.mb-4 {
-    flex-direction: column; /* Ubah tata letak menjadi kolom di mobile */
-    align-items: flex-start; /* Sejajarkan item ke kiri */
+    flex-direction: column;
+    align-items: flex-start;
     margin-bottom: 1.5rem !important;
 }
 
 .d-flex.justify-content-between.align-items-center.mb-4 h1.h2 {
-    font-size: 1.5rem; /* Ukuran font lebih kecil untuk judul di mobile */
+    font-size: 1.5rem;
     margin-bottom: 10px;
     text-align: center;
-    width: 100%; /* Pastikan judul mengambil lebar penuh */
+    width: 100%;
 }
 
 .year-select {
-    width: 100%; /* Buat dropdown tahun mengambil lebar penuh */
-    margin-top: 10px; /* Beri sedikit jarak dari judul */
+    width: 100%;
+    margin-top: 10px;
 }
 
 /* Kartu Statistik */
@@ -407,16 +434,16 @@ a {
 }
 
 .dashboard-card .stat-value {
-    font-size: 1.5rem; /* Sesuaikan ukuran font nilai statistik */
+    font-size: 1.5rem;
 }
 
 /* Progres bar di kartu distribusi kluster */
 .progress {
-    height: 10px !important; /* Buat progress bar sedikit lebih tebal */
+    height: 10px !important;
 }
 
-/* Bagian Grafik dan Statistik Level */
-@media (max-width: 991.98px) { /* Untuk tablet dan mobile, tumpuk kolom */
+/* Bagian Grafik dan Statistik Level (Breakpoint Bootstrap LG: 991.98px) */
+@media (max-width: 991.98px) {
     .col-lg-8,
     .col-lg-4 {
         width: 100%;
@@ -432,8 +459,8 @@ a {
 
 /* Peta Distribusi */
 .map-controls {
-    width: 100%; /* Kontrol peta mengambil lebar penuh */
-    margin-top: 15px; /* Beri jarak dari judul peta */
+    width: 100%;
+    margin-top: 15px;
 }
 
 .map-controls select {
@@ -446,8 +473,8 @@ a {
 
 /* Legenda peta */
 .map-legend {
-    flex-direction: column; /* Legenda peta menjadi kolom di mobile */
-    align-items: flex-start; /* Sejajarkan item legenda ke kiri */
+    flex-direction: column;
+    align-items: flex-start;
     margin-top: 15px;
 }
 
@@ -464,18 +491,18 @@ a {
 
 .table th, .table td {
     white-space: nowrap; /* Jaga agar teks di sel tidak pecah baris secara paksa */
-    padding: 0.75rem; /* Sesuaikan padding sel tabel */
+    padding: 0.75rem;
 }
 
 /* Badge status */
 .status-badge {
-    font-size: 0.85em; /* Ukuran font sedikit lebih kecil untuk badge */
+    font-size: 0.85em;
     padding: .3em .6em;
 }
 
 /* Override untuk ikon dan teks kecil jika terlalu besar/terlalu kecil */
 .stat-icon {
-    min-width: 40px; /* Ukuran ikon stat tetap konsisten */
+    min-width: 40px;
     height: 40px;
     display: flex;
     align-items: center;
@@ -491,10 +518,10 @@ a {
     font-size: 0.85em;
 }
 
-/* General spacing for smaller screens */
+/* Penyesuaian untuk layar sangat kecil (Breakpoint Bootstrap SM: 576px) */
 @media (max-width: 576px) {
     h1.h2 {
-        font-size: 1.3rem; /* Further reduce heading size */
+        font-size: 1.3rem;
     }
     .dashboard-card {
         padding: 0.8rem;
@@ -505,20 +532,18 @@ a {
     .small.text-muted {
         font-size: 0.8em;
     }
-    /* Untuk tombol di footer jika ada di baris yang sama */
     .footer-nav a {
         margin: 0.3rem 0.5rem; /* Lebih rapat di layar sangat kecil */
     }
     .social-icons a {
-        width: 32px; /* Ukuran ikon sosial sedikit lebih kecil */
+        width: 32px;
         height: 32px;
         font-size: 1.1rem;
     }
 }
 
-/* Aturan dari index.php yang dipertahankan atau dipindahkan ke sini */
-@media (max-width: 768px) {
-    /* Ini sudah ada di file asli Anda, pastikan untuk menggabungkannya dengan yang baru jika ada tumpang tindih */
+/* Aturan media query dari file asli Anda, digabungkan dan disesuaikan */
+@media (max-width: 767.98px) { /* Ini lebih spesifik dari 991.98px */
     .container {
         padding-left: 1rem;
         padding-right: 1rem;
@@ -528,12 +553,11 @@ a {
         padding: 1.25rem;
     }
 
+    /* dashboard-card padding sudah diatur di media query yang lebih besar,
+       jadi ini bisa dipertahankan jika ingin spesifik di bawah 768px,
+       atau dihapus jika ingin menggunakan padding dari media query 991.98px */
     .dashboard-card {
         padding: 1.25rem;
-    }
-
-    .navbar {
-        padding: 0.5rem 0;
     }
 
     .footer {
@@ -548,12 +572,12 @@ a {
         margin: 0 0.3rem;
     }
 
-    .map-legend {
+    .map-legend { /* Aturan ini sudah ada dan dipertahankan */
         flex-direction: column;
         align-items: center;
     }
 
-    .map-legend div {
+    .map-legend div { /* Aturan ini sudah ada dan dipertahankan */
         margin-bottom: 5px;
     }
 }
