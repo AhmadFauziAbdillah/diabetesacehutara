@@ -4,6 +4,7 @@
  *
  * Ditambahkan penyesuaian untuk responsivitas di perangkat mobile
  * dan perbaikan potensi masalah teks hilang pada navigasi.
+ * Warna teks navigasi dikembalikan menjadi hitam (#000000).
  */
 
 /* ---------- RESET & BASE STYLES ---------- */
@@ -45,22 +46,26 @@ a {
     font-weight: 600;
     display: flex;
     align-items: center;
+    color: #000000 !important; /* Pastikan warna brand hitam */
 }
 
 .navbar-brand i {
     margin-right: 0.75rem;
     font-size: 1.25rem;
+    color: #000000 !important; /* Pastikan warna ikon brand hitam */
 }
 
 .navbar .nav-link {
     padding: 0.5rem 1rem;
     position: relative;
     font-weight: 500;
-    color: #212529; /* Pastikan warna teks terlihat */
+    color: #000000 !important; /* Warna teks link navigasi hitam */
+    font-size: 1rem !important; /* Pastikan ukuran font standar */
 }
 
 .navbar .nav-link i {
     margin-right: 0.4rem;
+    color: #000000 !important; /* Warna ikon di nav-link hitam */
 }
 
 .navbar .nav-link::after {
@@ -96,7 +101,8 @@ a {
         text-align: center;
         padding: 0.75rem 1rem;
         border-bottom: 1px solid rgba(0,0,0,0.05);
-        color: #212529; /* Pastikan warna teks nav-link tetap terlihat di menu toggle */
+        color: #000000 !important; /* Pastikan warna teks nav-link tetap hitam di menu toggle */
+        font-size: 1rem !important; /* Pastikan ukuran font standar di menu toggle */
     }
     .navbar .nav-link:last-child {
         border-bottom: none;
@@ -106,6 +112,7 @@ a {
     }
     .navbar-brand {
         font-size: 1.25rem;
+        color: #000000 !important; /* Pastikan warna brand hitam di mobile */
     }
     /* Pastikan hamburger icon tidak hilang */
     .navbar-toggler {
@@ -122,7 +129,8 @@ a {
         width: 1.5em;
         height: 1.5em;
         vertical-align: middle;
-        background-image: var(--bs-navbar-toggler-icon-bg); /* Menggunakan variabel Bootstrap */
+        /* Ini adalah properti Bootstrap, pastikan CSS Bootstrap Anda terload dengan benar */
+        background-image: var(--bs-navbar-toggler-icon-bg);
         background-repeat: no-repeat;
         background-position: center;
         background-size: 100%;
@@ -403,12 +411,11 @@ a {
 .container-fluid.py-4 {
     padding-left: 15px;
     padding-right: 15px;
-    padding-top: 1rem !important; /* Kurangi padding atas/bawah */
+    padding-top: 1rem !important;
     padding-bottom: 1rem !important;
 }
 
 /* Bagian Header Dashboard (Judul dan Dropdown Tahun) */
-/* Flex direction column untuk tumpukan di mobile */
 .d-flex.justify-content-between.align-items-center.mb-4 {
     flex-direction: column;
     align-items: flex-start;
@@ -429,8 +436,8 @@ a {
 
 /* Kartu Statistik */
 .dashboard-card {
-    margin-bottom: 1rem; /* Kurangi margin antar kartu */
-    padding: 1rem; /* Kurangi padding internal kartu */
+    margin-bottom: 1rem;
+    padding: 1rem;
 }
 
 .dashboard-card .stat-value {
@@ -447,13 +454,13 @@ a {
     .col-lg-8,
     .col-lg-4 {
         width: 100%;
-        margin-bottom: 1.5rem; /* Tambahkan margin bawah saat ditumpuk */
+        margin-bottom: 1.5rem;
     }
 }
 
 .chart-wrapper {
     position: relative;
-    height: 300px; /* Sesuaikan tinggi grafik untuk mobile */
+    height: 300px;
     width: 100%;
 }
 
@@ -468,7 +475,7 @@ a {
 }
 
 #regionMap {
-    height: 350px !important; /* Sesuaikan tinggi peta untuk mobile */
+    height: 350px !important;
 }
 
 /* Legenda peta */
@@ -480,17 +487,17 @@ a {
 
 .map-legend div {
     margin-bottom: 5px;
-    margin-right: 0 !important; /* Hapus margin kanan antar item */
+    margin-right: 0 !important;
 }
 
 /* Tabel Data */
 .table-responsive {
-    overflow-x: auto; /* Pastikan tabel bisa di-scroll horizontal jika terlalu lebar */
-    -webkit-overflow-scrolling: touch; /* Optimalkan scrolling di iOS */
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 .table th, .table td {
-    white-space: nowrap; /* Jaga agar teks di sel tidak pecah baris secara paksa */
+    white-space: nowrap;
     padding: 0.75rem;
 }
 
@@ -533,7 +540,7 @@ a {
         font-size: 0.8em;
     }
     .footer-nav a {
-        margin: 0.3rem 0.5rem; /* Lebih rapat di layar sangat kecil */
+        margin: 0.3rem 0.5rem;
     }
     .social-icons a {
         width: 32px;
@@ -543,7 +550,7 @@ a {
 }
 
 /* Aturan media query dari file asli Anda, digabungkan dan disesuaikan */
-@media (max-width: 767.98px) { /* Ini lebih spesifik dari 991.98px */
+@media (max-width: 767.98px) {
     .container {
         padding-left: 1rem;
         padding-right: 1rem;
@@ -553,9 +560,6 @@ a {
         padding: 1.25rem;
     }
 
-    /* dashboard-card padding sudah diatur di media query yang lebih besar,
-       jadi ini bisa dipertahankan jika ingin spesifik di bawah 768px,
-       atau dihapus jika ingin menggunakan padding dari media query 991.98px */
     .dashboard-card {
         padding: 1.25rem;
     }
@@ -572,12 +576,12 @@ a {
         margin: 0 0.3rem;
     }
 
-    .map-legend { /* Aturan ini sudah ada dan dipertahankan */
+    .map-legend {
         flex-direction: column;
         align-items: center;
     }
 
-    .map-legend div { /* Aturan ini sudah ada dan dipertahankan */
+    .map-legend div {
         margin-bottom: 5px;
     }
 }
