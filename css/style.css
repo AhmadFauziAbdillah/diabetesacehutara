@@ -4,7 +4,8 @@
  *
  * Ditambahkan penyesuaian untuk responsivitas di perangkat mobile
  * dan perbaikan potensi masalah teks hilang pada navigasi.
- * Warna teks navigasi dikembalikan menjadi hitam (#000000).
+ * Warna teks navigasi dikembalikan menjadi hitam (#000000)
+ * dan penargetan lebih spesifik untuk teks di dalam nav-link.
  */
 
 /* ---------- RESET & BASE STYLES ---------- */
@@ -61,10 +62,25 @@ a {
     font-weight: 500;
     color: #000000 !important; /* Warna teks link navigasi hitam */
     font-size: 1rem !important; /* Pastikan ukuran font standar */
+    line-height: 1.5 !important; /* Pastikan tinggi baris cukup untuk teks */
+    display: flex; /* Menggunakan flexbox untuk penataan ikon dan teks */
+    align-items: center; /* Sejajarkan item secara vertikal */
+    gap: 0.4rem; /* Jarak antara ikon dan teks */
 }
 
+/* Menargetkan teks langsung di dalam nav-link atau di dalam span/div di dalamnya */
+.navbar .nav-link,
+.navbar .nav-link span,
+.navbar .nav-link div { /* Tambahan untuk menargetkan elemen teks di dalam nav-link */
+    color: #000000 !important; /* Warna teks link navigasi hitam (sangat penting) */
+    font-size: 1rem !important; /* Pastikan ukuran font standar */
+    display: inline !important; /* Pastikan teks tidak display:none */
+    visibility: visible !important; /* Pastikan teks terlihat */
+}
+
+
 .navbar .nav-link i {
-    margin-right: 0.4rem;
+    margin-right: 0; /* Margin akan diatur oleh gap di parent flex */
     color: #000000 !important; /* Warna ikon di nav-link hitam */
 }
 
@@ -98,12 +114,29 @@ a {
     }
     .navbar .nav-link {
         width: 100%;
-        text-align: center;
+        text-align: center; /* Sesuaikan jika ingin teks ikon rata tengah */
         padding: 0.75rem 1rem;
         border-bottom: 1px solid rgba(0,0,0,0.05);
         color: #000000 !important; /* Pastikan warna teks nav-link tetap hitam di menu toggle */
         font-size: 1rem !important; /* Pastikan ukuran font standar di menu toggle */
+        line-height: 1.5 !important;
+        justify-content: center; /* Rata tengah ikon + teks */
     }
+    /* Menargetkan teks langsung di dalam nav-link atau di dalam span/div di dalamnya untuk mobile */
+    .navbar .nav-link,
+    .navbar .nav-link span,
+    .navbar .nav-link div {
+        color: #000000 !important;
+        font-size: 1rem !important;
+        display: inline !important;
+        visibility: visible !important;
+    }
+
+    .navbar .nav-link i {
+        margin-right: 0.4rem; /* Kembalikan margin kanan untuk ikon di mobile agar ada jarak dari teks */
+        color: #000000 !important;
+    }
+
     .navbar .nav-link:last-child {
         border-bottom: none;
     }
@@ -129,7 +162,6 @@ a {
         width: 1.5em;
         height: 1.5em;
         vertical-align: middle;
-        /* Ini adalah properti Bootstrap, pastikan CSS Bootstrap Anda terload dengan benar */
         background-image: var(--bs-navbar-toggler-icon-bg);
         background-repeat: no-repeat;
         background-position: center;
