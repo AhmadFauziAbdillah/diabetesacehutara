@@ -1,27 +1,33 @@
-/* 
+/*
  * Sidebar Component Styles
  * This file contains styles for the collapsible sidebar navigation
+ * Optimized for Android/Mobile support.
  */
 
 /* ---------- SIDEBAR BASE STYLES ---------- */
 .sidebar {
     position: fixed;
-    top: 56px;
+    top: 56px; /* Posisi di bawah navbar standar */
     bottom: 0;
     left: 0;
-    z-index: 100;
+    z-index: 100; /* Pastikan di atas konten utama */
     padding: 0;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
     transition: all 0.3s ease;
     width: 250px;
     background-color: #ffffff;
-    overflow-y: auto;
-    overflow-x: hidden;
+    overflow-y: auto; /* Memungkinkan scroll vertikal jika konten panjang */
+    overflow-x: hidden; /* Mencegah scroll horizontal yang tidak diinginkan */
 }
 
 .sidebar-header {
     padding: 1rem 0;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    display: flex; /* Tambahkan flex untuk header sidebar */
+    align-items: center;
+    justify-content: space-between; /* Untuk menempatkan judul dan toggle */
+    padding-left: 1rem; /* Tambahkan padding agar judul tidak terlalu mepet kiri */
+    padding-right: 1rem;
 }
 
 .sidebar-title {
@@ -31,6 +37,7 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    color: #212529; /* Pastikan warna teks judul sidebar */
 }
 
 .sidebar-toggle {
@@ -42,6 +49,7 @@
     justify-content: center;
     border-radius: 50%;
     transition: all 0.3s;
+    cursor: pointer; /* Menandakan bisa diklik */
 }
 
 .sidebar-toggle:hover {
@@ -54,12 +62,13 @@
     transition: all 0.3s;
 }
 
+/* Tombol Toggler untuk mobile, yang muncul saat sidebar tersembunyi */
 .sidebar-toggler {
     position: fixed;
-    top: 70px;
+    top: 70px; /* Jaga agar tidak terlalu dekat dengan navbar */
     left: 10px;
-    z-index: 99;
-    display: none;
+    z-index: 99; /* Di bawah sidebar tapi di atas konten utama */
+    display: none; /* Default tersembunyi di desktop */
     color: #0d6efd;
     width: 40px;
     height: 40px;
@@ -68,27 +77,40 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     align-items: center;
     justify-content: center;
+    cursor: pointer;
+    font-size: 1.5rem; /* Ukuran ikon lebih besar agar mudah disentuh */
 }
 
 /* Sidebar Navigation */
 .sidebar .nav-link {
     padding: 0.8rem 1rem;
     font-weight: 500;
-    color: #495057;
+    color: #495057; /* Pastikan warna teks default link */
     display: flex;
     align-items: center;
     border-radius: 0.25rem;
     margin: 0.2rem 0.5rem;
     transition: all 0.2s ease-in-out;
-    white-space: nowrap;
+    white-space: nowrap; /* Mencegah teks pecah baris */
     overflow: hidden;
-    text-overflow: ellipsis;
+    text-overflow: ellipsis; /* Menampilkan elipsis jika teks terlalu panjang */
 }
+
+/* Memastikan teks dalam nav-link terlihat */
+.sidebar .nav-link span,
+.sidebar .nav-link p,
+.sidebar .nav-link a { /* Menargetkan elemen yang mungkin membungkus teks */
+    color: inherit; /* Mewarisi warna dari parent .nav-link */
+    display: inline; /* Pastikan elemen-elemen ini tidak disembunyikan */
+    font-size: 1rem; /* Ukuran font standar */
+    visibility: visible; /* Pastikan terlihat */
+}
+
 
 .sidebar .nav-link i {
     font-size: 1.1rem;
     margin-right: 0.75rem;
-    width: 20px;
+    width: 20px; /* Ukuran tetap untuk ikon */
     text-align: center;
     transition: margin 0.3s ease;
 }
@@ -115,9 +137,15 @@
 }
 
 .sidebar.sidebar-collapsed .sidebar-title,
-.sidebar.sidebar-collapsed .sidebar-text {
+.sidebar.sidebar-collapsed .sidebar-text { /* Menargetkan elemen teks di sidebar yang menyusut */
     display: none;
 }
+
+/* Untuk kasus di mana teks menu berada dalam elemen lain yang mungkin tidak memiliki class 'sidebar-text' */
+.sidebar.sidebar-collapsed .nav-link > *:not(i) {
+    display: none; /* Sembunyikan semua elemen anak selain ikon */
+}
+
 
 .sidebar.sidebar-collapsed .sidebar-toggle {
     margin-left: auto;
@@ -131,6 +159,7 @@
 .sidebar.sidebar-collapsed .nav-link {
     justify-content: center;
     padding: 0.8rem;
+    text-align: center; /* Pastikan ikon rata tengah saat menyusut */
 }
 
 .sidebar.sidebar-collapsed .nav-link i {
@@ -141,38 +170,63 @@
 /* ---------- MAIN CONTENT ADJUSTMENT ---------- */
 main {
     transition: all 0.3s ease;
-    margin-left: 250px;
+    margin-left: 250px; /* Margin sesuai lebar sidebar */
 }
 
 .sidebar-collapsed + main {
-    margin-left: 70px;
+    margin-left: 70px; /* Margin sesuai lebar sidebar yang menyusut */
 }
 
 /* ---------- RESPONSIVE ADJUSTMENTS ---------- */
-@media (max-width: 767.98px) {
+@media (max-width: 767.98px) { /* Untuk perangkat mobile (breakpoint Bootstrap SM) */
     .sidebar {
-        transform: translateX(-100%);
-        width: 250px;
+        position: fixed; /* Pastikan posisi tetap fixed */
+        top: 56px; /* Di bawah navbar */
+        left: 0;
+        width: 250px; /* Lebar sidebar di mobile */
+        transform: translateX(-100%); /* Sembunyikan sidebar di luar layar secara default */
+        transition: transform 0.3s ease; /* Transisi untuk animasi geser */
+        z-index: 1030; /* Pastikan sidebar di atas navbar saat ditampilkan */
+        box-shadow: 0.5rem 0 1rem rgba(0, 0, 0, 0.15); /* Shadow di sisi kanan saat terbuka */
     }
-    
+
     .sidebar.mobile-show {
-        transform: translateX(0);
+        transform: translateX(0); /* Tampilkan sidebar saat class mobile-show aktif */
     }
-    
+
     .sidebar-toggler {
-        display: flex;
+        display: flex; /* Tampilkan tombol toggler di mobile */
+        z-index: 1020; /* Di atas konten utama, di bawah sidebar saat terbuka */
+        top: calc(56px + 10px); /* Sesuaikan posisi agar tidak tersembunyi oleh navbar */
     }
-    
+
+    /* Pastikan konten utama tidak terpengaruh margin sidebar di mobile */
     main {
         margin-left: 0 !important;
         width: 100% !important;
         padding-left: 15px !important;
         padding-right: 15px !important;
     }
-    
-    /* Ensure sidebar stays on top in mobile */
-    .sidebar {
-        z-index: 1030;
+
+    /* Override untuk main jika sidebar terbuka di mobile, bisa ditambahkan overlay */
+    body.sidebar-open-mobile {
+        overflow: hidden; /* Mencegah scroll body saat sidebar terbuka */
+    }
+    body.sidebar-open-mobile main::after {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0,0,0,0.5); /* Overlay gelap */
+        z-index: 1025; /* Di atas main, di bawah sidebar */
+        cursor: pointer;
+    }
+
+    /* Sembunyikan sidebar-toggle yang ada di dalam sidebar-header di mobile */
+    .sidebar-header .sidebar-toggle {
+        display: none;
     }
 }
 
@@ -180,6 +234,10 @@ main {
 .dark-theme .sidebar {
     background-color: #2c3034;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.25);
+}
+
+.dark-theme .sidebar-title {
+    color: #f8f9fa; /* Warna judul di dark theme */
 }
 
 .dark-theme .sidebar-toggle {
@@ -193,6 +251,12 @@ main {
 
 .dark-theme .sidebar .nav-link {
     color: #adb5bd;
+}
+
+.dark-theme .sidebar .nav-link span,
+.dark-theme .sidebar .nav-link p,
+.dark-theme .sidebar .nav-link a { /* Pastikan teks di dark theme juga mewarisi warna */
+    color: inherit;
 }
 
 .dark-theme .sidebar .nav-link:hover {
